@@ -632,14 +632,38 @@
 
     setText('checkoutTotal', TR.formatMoney(calcSubtotal(products, cart)));
 
-    var co = $('#checkoutForm'); if(co) co.addEventListener('submit', (e)=>{
+    var co = $('#checkoutForm'); 
+    if(co) co.addEventListener('submit', (e)=>{
       e.preventDefault();
-      toast('Order placed');
-      TR.clearCart();
-      updateCartCount();
-      setTimeout(()=>{ window.location.href = 'index.html'; }, 700);
+
+      const products = TR.loadProducts().filter(p=>p.active !== false);
+      const cart = TR.loadCart();
+
+      if(!Object.keys(cart).length){
+        toast('Your cart is empty');
+        return;
+      }
+
+      const details = {
+        name: ($('#coName')?.value || '').trim(),
+        phone: ($('#coPhone')?.value || '').trim(),
+        city: ($('#coCity')?.value || '').trim(),
+        address: ($('#coAddress')?.value || '').trim(),
+        notes: ($('#coNotes')?.value || '').trim()
+      };
+
+      const msg = buildIGOrderMessage(details, products, cart);
+
+      copyToClipboard(msg)
+        .then(()=> toast('Copied ✅ Paste in Instagram & send'))
+        .catch(()=> window.prompt('Copy your order message:', msg))
+        .finally(()=>{
+          openInstagramDM();
+          TR.clearCart();
+          updateCartCount();
+        });
     });
-  }
+    }
 
   function boot(){
     renderHeader();
