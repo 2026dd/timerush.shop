@@ -658,5 +658,58 @@
     if(page === 'checkout') renderCheckout();
   }
 
+  function buildIGOrderMessage(details, products, cart){
+  const ids = Object.keys(cart || {});
+  if(!ids.length) return 'Hello Time Rush 👋\nMy cart is empty.';
+
+  const lines = [];
+  lines.push('Hello Time Rush 👋');
+  lines.push('I want to order:');
+  lines.push('');
+
+  ids.forEach(id=>{
+    const p = TR.findProduct(products, id);
+    const qty = Number(cart[id]) || 0;
+    if(!p || qty <= 0) return;
+    lines.push(`- ${p.name} x${qty} — ${TR.formatMoney(p.price * qty)}`);
+  });
+
+  lines.push('');
+  lines.push(`Total: ${TR.formatMoney(calcSubtotal(products, cart))}`);
+  lines.push('');
+  lines.push('Delivery details:');
+  lines.push(`Name: ${details?.name || ''}`);
+  lines.push(`Phone: ${details?.phone || ''}`);
+  lines.push(`City: ${details?.city || ''}`);
+  lines.push(`Address: ${details?.address || ''}`);
+  lines.push(`Notes: ${details?.notes || ''}`);
+
+  return lines.join('\n');
+}
+
+function copyToClipboard(text){
+  if(navigator.clipboard && navigator.clipboard.writeText){
+    return navigator.clipboard.writeText(text);
+  }
+  return new Promise((resolve, reject)=>{
+    try{
+      const ta = document.createElement('textarea');
+      ta.value = text;
+      ta.setAttribute('readonly','');
+      ta.style.position = 'fixed';
+      ta.style.left = '-9999px';
+      document.body.appendChild(ta);
+      ta.select();
+      const ok = document.execCommand('copy');
+      ta.remove();
+      ok ? resolve() : reject(new Error('copy failed'));
+    }catch(err){ reject(err); }
+  });
+}
+
+function openInstagramDM(){
+  window.location.href = 'https://ig.me/m/timerush.leb';
+}
+
   window.addEventListener('DOMContentLoaded', boot);
 })();
