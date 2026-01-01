@@ -663,7 +663,7 @@
         })
         .catch(()=>{
           window.prompt('Copy your order message:', msg);
-          alert('✅ Copy done!\nروح ع Instagram واعمل Paste + Send.');
+          alert('✅ Copy done!');
           openInstagramDM();
           TR.clearCart();
           updateCartCount();
