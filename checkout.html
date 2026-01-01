@@ -73,37 +73,41 @@
     <section class="page-hero">
       <div class="container">
         <h1>Checkout</h1>
-        <p class="muted">Checkout is front‑end only. Connect payment + backend to accept real orders.</p>
+       <p class="muted">Checkout is front‑end only. Connect payment + backend to accept real orders.</p>
       </div>
     </section>
 
     <section class="section">
-      <div class="container checkout">
+     <div class="container checkout">
         <form id="checkoutForm" class="form checkout-form">
           <h2>Shipping details</h2>
 
           <div class="form-grid">
-            <div class="form-row">
-              <label>Full name</label>
-              <input required placeholder="Your name" />
-            </div>
-            <div class="form-row">
-              <label>Phone</label>
-              <input required placeholder="Phone number" />
-            </div>
-            <div class="form-row">
-              <label>City</label>
-              <input required placeholder="City" />
-            </div>
-            <div class="form-row">
-              <label>Address</label>
-              <input required placeholder="Street, building..." />
-            </div>
-            <div class="form-row form-row-full">
-              <label>Notes (optional)</label>
-              <textarea rows="3" placeholder="Delivery notes"></textarea>
-            </div>
+           <div class="form-row">
+            <label>Full name</label>
+            <input id="coName" required placeholder="Your name" />
           </div>
+
+          <div class="form-row">
+           <label>Phone</label>
+           <input id="coPhone" required placeholder="Phone number" />
+          </div>
+
+          <div class="form-row">
+           <label>City</label>
+           <input id="coCity" required placeholder="City" />
+          </div>
+
+          <div class="form-row">
+           <label>Address</label>
+           <input id="coAddress" required placeholder="Street, building..." />
+          </div>
+
+          <div class="form-row form-row-full">
+           <label>Notes (optional)</label>
+           <textarea id="coNotes" rows="3" placeholder="Delivery notes"></textarea>
+          </div>
+         </div>
 
           <button class="btn btn-primary" type="submit">Place order</button>
           <p class="fine muted">After placing an order, your cart will be cleared.</p>
