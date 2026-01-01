@@ -1,6 +1,5 @@
 // Time Rush — Store & Storage Helpers
 // Handles products/settings (localStorage) + cart.
-
 (function(){
   const KEYS = {
     products: 'tr_products_v1',
@@ -9,9 +8,15 @@
     adminPass: 'tr_admin_pass_v1'
   };
 
-  function lsGet(key){ try{ return window.lsGet(key); }catch(e){ return null; } }
-  function lsSet(key, val){ try{ window.lsSet(key, val); }catch(e){} }
-  function lsRemove(key){ try{ window.lsRemove(key); }catch(e){} }
+  function lsGet(key){
+  try { return localStorage.getItem(key); } catch(e){ return null; }
+  }
+  function lsSet(key, val){
+  try { localStorage.setItem(key, val); } catch(e){}
+  }
+  function lsRemove(key){
+  try { localStorage.removeItem(key); } catch(e){}
+  }
 
   function safeParse(json, fallback){
     try{ return JSON.parse(json); }catch(e){ return fallback; }
@@ -154,7 +159,8 @@
   }
 
   function findProduct(products, id){
-    return products.find(p=>p.id === id);
+  const sid = String(id || '').trim();
+  return products.find(p => String(p.id || '').trim() === sid);
   }
 
   function formatMoney(value, settings){
