@@ -109,7 +109,7 @@ window.TR_DEFAULT_PRODUCTS = [
     compareAtPrice: 0,
     badge: "New",
     image: "assets/images/bryazole.jpg",
-    images: ["assets/images/bryazole.jpg", "assets/images/bryazole0.jpg", "assets/images/bryazole1.jpg", "assets/images/bryazole2.jpg", "assets/images/bryazole3.jpg", ],
+    images: ["assets/images/bryazole.jpg", "assets/images/bryazole0.jpg", "assets/images/bryazole1.jpg", "assets/images/bryazole2.jpg", "assets/images/bryazole3.jpg"],
     shortDescription: "Ultra-clean dial with warm brown strap.",
     description:
       "A minimalist face with warm contrast. Perfect for a smart-casual everyday look.",
@@ -130,7 +130,7 @@ window.TR_DEFAULT_PRODUCTS = [
     compareAtPrice: 0,
     badge: "New",
     image: "assets/images/bsyazole.jpg",
-    images: ["assets/images/bsyazole.jpg", "assets/images/bsyazole0.jpg", "assets/images/bsyazole1.jpg", ],
+    images: ["assets/images/bsyazole.jpg", "assets/images/bsyazole0.jpg", ],
     shortDescription: "Minimal black dial with matching strap.",
     description:
       "Understated and clean. The all-black minimalist look that goes with anything.",
