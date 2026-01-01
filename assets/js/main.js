@@ -655,9 +655,15 @@
       const msg = buildIGOrderMessage(details, products, cart);
 
       copyToClipboard(msg)
-        .then(()=> toast('Copied ✅ Paste in Instagram & send'))
-        .catch(()=> window.prompt('Copy your order message:', msg))
-        .finally(()=>{
+        .then(()=>{
+          alert('✅ Details copied to clipboard!\nروح ع Instagram واعمل Paste + Send.');
+          openInstagramDM();
+          TR.clearCart();
+          updateCartCount();
+        })
+        .catch(()=>{
+          window.prompt('Copy your order message:', msg);
+          alert('✅ Copy done!\nروح ع Instagram واعمل Paste + Send.');
           openInstagramDM();
           TR.clearCart();
           updateCartCount();
