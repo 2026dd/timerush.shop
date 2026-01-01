@@ -656,7 +656,7 @@
 
       copyToClipboard(msg)
         .then(()=>{
-          alert('✅ Details copied to clipboard!\nروح ع Instagram واعمل Paste + Send.');
+          alert('✅ Details copied to clipboard!');
           openInstagramDM();
           TR.clearCart();
           updateCartCount();
