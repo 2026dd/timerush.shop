@@ -195,8 +195,8 @@ window.TR_DEFAULT_PRODUCTS = [
     price: 14.99,
     compareAtPrice: 18.00,
     badge: "Sale",
-    image: "assets/images/5787466065293020251_121.jpg",
-    images: ["assets/images/5787466065293020251_121.jpg", "assets/images/5787466065293020250_121.jpg", "assets/images/5787466065293020257_121.jpg", "assets/images/5787466065293020251_121.jpg"],
+    image: "assets/images/5787466065293020250_121.jpg",
+    images: ["assets/images/5787466065293020250_121.jpg", "assets/images/5787466065293020252_121.jpg", "assets/images/5787466065293020257_121.jpg", "assets/images/5787466065293020251_121.jpg"],
     shortDescription: "Military olive digital with clean screen contrast.",
     description:
       "Olive colorway with a crisp display layout. A practical piece with everyday timers, alarms and a comfortable strap.",
