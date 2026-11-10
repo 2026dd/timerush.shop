@@ -58,7 +58,7 @@ window.TR_DEFAULT_PRODUCTS = [
     },
   },
   {
-    id: "tr-0015",
+    id: "tr-003",
     name: "Cassio G-Shock — White",
     brand: "Time Rush",
     category: "sport",
@@ -80,7 +80,7 @@ window.TR_DEFAULT_PRODUCTS = [
     },
   },
   {
-    id: "tr-003",
+    id: "tr-011",
     name: "Curren Steel — Black Dial",
     brand: "CURREN",
     category: "classic",
