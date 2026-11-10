@@ -95,7 +95,7 @@ window.TR_DEFAULT_PRODUCTS = [
     highlights: ["Sport silhouette", "Comfort strap", "Modern case"],
     specs: {
       Movement: "Quartz",
-      Display: "Analog + digital",
+      Display: "digital",
       Strap: "Resin",
       Features: "Alarm.Timer.StopWatch.Date",
     },
