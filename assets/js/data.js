@@ -122,7 +122,7 @@ window.TR_DEFAULT_PRODUCTS = [
     },
   },
   {
-    id: "tr-004",
+    id: "tr-012",
     name: "Curren Steel — White Dial",
     brand: "CURREN",
     category: "classic",
