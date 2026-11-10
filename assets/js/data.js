@@ -77,6 +77,28 @@ window.TR_DEFAULT_PRODUCTS = [
       Strap: "Resin",
       Features: "Alarm.Timer.StopWatch.Date",
     },
+    {
+    id: "tr-004",
+    name: "Casio G-Shock — D012",
+    brand: "Time Rush",
+    category: "sport",
+    categories: ["featured", "sport"],
+    price: 34.99,
+    compareAtPrice: ,
+    badge: "New",
+    image: "assets/images/gshockd.jpg",
+    images: ["assets/images/gshockd.jpg", "assets/images/gshockd1.jpg", "assets/images/gshockd2.jpg", "assets/images/gshockd3.jpg"],
+    shortDescription: "Octagon case with modern dial details.",
+    description:
+      "A bold octagon case with a modern sport silhouette. Lightweight strap and strong wrist presence.",
+    highlights: ["Sport silhouette", "Comfort strap", "Modern case"],
+    specs: {
+      Movement: "Quartz",
+      Display: "Analog + digital",
+      Strap: "Resin",
+      Features: "Alarm.Timer.StopWatch.Date",
+    },
+  },
   },
   {
     id: "tr-011",
