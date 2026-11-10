@@ -77,7 +77,8 @@ window.TR_DEFAULT_PRODUCTS = [
       Strap: "Resin",
       Features: "Alarm.Timer.StopWatch.Date",
     },
-    {
+  },
+  {
     id: "tr-004",
     name: "Casio G-Shock — D012",
     brand: "Time Rush",
@@ -98,7 +99,6 @@ window.TR_DEFAULT_PRODUCTS = [
       Strap: "Resin",
       Features: "Alarm.Timer.StopWatch.Date",
     },
-  },
   },
   {
     id: "tr-011",
