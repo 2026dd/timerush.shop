@@ -37,7 +37,7 @@ window.TR_DEFAULT_PRODUCTS = [
   },
   {
     id: "tr-002",
-    name: "Cassio G-Shock — Matte Black",
+    name: "Casio G-Shock — Matte Black",
     brand: "Time Rush",
     category: "sport",
     categories: ["featured", "sport"],
@@ -59,7 +59,7 @@ window.TR_DEFAULT_PRODUCTS = [
   },
   {
     id: "tr-003",
-    name: "Cassio G-Shock — White",
+    name: "Casio G-Shock — White",
     brand: "Time Rush",
     category: "sport",
     categories: ["featured", "sport"],
