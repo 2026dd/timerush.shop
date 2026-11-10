@@ -1,0 +1,19 @@
+(function(){
+ const $=id=>document.getElementById(id); let db=null; let cached=[];
+ const ready=()=>window.supabase && window.TR_SUPABASE_URL && window.TR_SUPABASE_ANON_KEY && !window.TR_SUPABASE_URL.includes('YOUR-PROJECT') && !window.TR_SUPABASE_ANON_KEY.includes('YOUR_SUPABASE');
+ function init(){ if(!ready()){ $('loginError').textContent='Connect Supabase first. Follow the setup guide in SUPABASE_SETUP.md.'; $('loginForm').querySelector('button').disabled=true; return; }
+  db=window.supabase.createClient(window.TR_SUPABASE_URL,window.TR_SUPABASE_ANON_KEY);
+  db.auth.getSession().then(({data})=>{if(data.session)showDashboard();});
+  $('loginForm').addEventListener('submit',login); $('signOut').addEventListener('click',signOut); $('refreshOrders').addEventListener('click',loadOrders); $('statusFilter').addEventListener('change',renderOrders);
+ }
+ async function login(e){e.preventDefault();$('loginError').textContent='';const b=e.submitter;b.disabled=true;b.textContent='Signing in…';const {error}=await db.auth.signInWithPassword({email:$('adminEmail').value.trim(),password:$('adminPassword').value});b.disabled=false;b.textContent='Sign in';if(error){$('loginError').textContent=error.message;return;}showDashboard();}
+ async function signOut(){await db.auth.signOut();$('dashboard').hidden=true;$('loginPanel').hidden=false;}
+ function showDashboard(){$('loginPanel').hidden=true;$('dashboard').hidden=false;loadOrders();}
+ async function loadOrders(){ $('dashboardError').textContent='';$('ordersList').innerHTML='<div class="tr-empty">Loading orders…</div>';const {data,error}=await db.from('tr_orders').select('*, tr_order_items(*)').order('created_at',{ascending:false}).limit(200);if(error){$('dashboardError').textContent=error.message;$('ordersList').innerHTML='';return;}cached=data||[];renderOrders(); }
+ function esc(v){return String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+ function renderOrders(){const filter=$('statusFilter').value;const rows=cached.filter(o=>filter==='all'||o.status===filter);$('orderCount').textContent=`${rows.length} ${rows.length===1?'order':'orders'}`;if(!rows.length){$('ordersList').innerHTML='<div class="tr-empty">No orders found.</div>';return;}
+ $('ordersList').innerHTML=rows.map(o=>{const date=new Date(o.created_at).toLocaleString();const items=(o.tr_order_items||[]).map(i=>`${esc(i.product_name)} × ${i.quantity} — $${Number(i.line_total).toFixed(2)}`).join('<br>');return `<article class="tr-order"><div class="tr-order-top"><strong>Order #${esc(o.order_number)}</strong><span class="tr-order-meta">${esc(date)}</span></div><div class="tr-order-meta">${esc(o.customer_name)} · ${esc(o.customer_phone)}<br>${esc(o.customer_city)} — ${esc(o.customer_address)}${o.customer_notes?`<br>Notes: ${esc(o.customer_notes)}`:''}</div><div class="tr-order-items">${items}</div><div class="tr-order-bottom"><strong>Total: $${Number(o.total).toFixed(2)}</strong><div class="tr-admin-actions"><select data-status-for="${esc(o.id)}" aria-label="Order status">${['pending','confirmed','shipped','delivered','cancelled'].map(s=>`<option value="${s}" ${o.status===s?'selected':''}>${s[0].toUpperCase()+s.slice(1)}</option>`).join('')}</select><button class="btn btn-ghost" data-save-status="${esc(o.id)}">Save</button></div></div></article>`;}).join('');
+ $('ordersList').querySelectorAll('[data-save-status]').forEach(btn=>btn.addEventListener('click',async()=>{const id=btn.dataset.saveStatus;const status=$(`[data-status-for="${id}"]`).value;btn.disabled=true;const {error}=await db.from('tr_orders').update({status}).eq('id',id);btn.disabled=false;if(error){$('dashboardError').textContent=error.message;return;}const row=cached.find(x=>x.id===id);if(row)row.status=status;renderOrders();}));
+ }
+ document.addEventListener('DOMContentLoaded',init);
+})();
