@@ -58,6 +58,28 @@ window.TR_DEFAULT_PRODUCTS = [
     },
   },
   {
+    id: "tr-0015",
+    name: "Cassio G-Shock — White",
+    brand: "Time Rush",
+    category: "sport",
+    categories: ["featured", "sport"],
+    price: 28.99,
+    compareAtPrice: 35.00,
+    badge: "Sale",
+    image: "assets/images/gshockw.jpg",
+    images: ["assets/images/gshockw.jpg", "assets/images/gshockw1.jpg"],
+    shortDescription: "Octagon case with modern dial details.",
+    description:
+      "A bold octagon case with a modern sport silhouette. Lightweight strap and strong wrist presence.",
+    highlights: ["Sport silhouette", "Comfort strap", "Modern case"],
+    specs: {
+      Movement: "Quartz",
+      Display: "Analog + digital",
+      Strap: "Resin",
+      Features: "Alarm.Timer.StopWatch.Date",
+    },
+  },
+  {
     id: "tr-003",
     name: "Curren Steel — Black Dial",
     brand: "CURREN",
