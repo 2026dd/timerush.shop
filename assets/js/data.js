@@ -84,7 +84,7 @@ window.TR_DEFAULT_PRODUCTS = [
     category: "sport",
     categories: ["featured", "sport"],
     price: 34.99,
-    compareAtPrice: ,
+    compareAtPrice: 0,
     badge: "New",
     image: "assets/images/gshockd.jpg",
     images: ["assets/images/gshockd.jpg", "assets/images/gshockd1.jpg", "assets/images/gshockd2.jpg", "assets/images/gshockd3.jpg"],
